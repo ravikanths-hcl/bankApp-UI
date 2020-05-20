@@ -21,7 +21,7 @@ export class AdminService {
   }
 
   public createUser(userData, callback) {
-    this.client.post('http://edcl9.sse.codesandbox.io/api/user', userData)
+    this.client.post('https://edcl9.sse.codesandbox.io/api/user', userData)
       .subscribe((response) => {
         console.log(response);
         callback(response);
@@ -29,7 +29,7 @@ export class AdminService {
   }
 
   public createAccount(accountData, callback) {
-    this.client.post('http://edcl9.sse.codesandbox.io/api/account', accountData)
+    this.client.post('https://edcl9.sse.codesandbox.io/api/account', accountData)
       .subscribe((response) => {
         console.log(response);
         callback(response);
@@ -37,7 +37,7 @@ export class AdminService {
   }
 
   public getUsers(callback) {
-    this.client.get('http://edcl9.sse.codesandbox.io/api/users')
+    this.client.get('https://edcl9.sse.codesandbox.io/api/users')
       .subscribe((response) => {
         console.log(response);
         callback(response);
@@ -45,7 +45,7 @@ export class AdminService {
   }
 
   public getBranches(callback) {
-    this.client.get('http://edcl9.sse.codesandbox.io/api/branches')
+    this.client.get('https://edcl9.sse.codesandbox.io/api/branches')
       .subscribe((response) => {
         console.log(response);
         callback(response);
@@ -53,7 +53,7 @@ export class AdminService {
   }
 
   // public getUserDetails(userId, callBackFunction){
-  //   this.client.get(`http://edcl9.sse.codesandbox.io/api/user/${userId}`)
+  //   this.client.get(`https://edcl9.sse.codesandbox.io/api/user/${userId}`)
   //   .subscribe((response) => {
   //     console.log(response);
   //     this.setUserData.next(response[0]);
@@ -62,7 +62,7 @@ export class AdminService {
   // }
 
   public getAccountDetails(userId, callBackFunction){
-    this.client.get(`http://edcl9.sse.codesandbox.io/api/account/${userId}`)
+    this.client.get(`https://edcl9.sse.codesandbox.io/api/account/${userId}`)
     .subscribe((response) => {
       console.log(response);
       this.setAccountData.next(response);
@@ -71,7 +71,7 @@ export class AdminService {
   }
 
   public updateAccountNewTransaction(accountTrans, callback) {
-    this.client.post('http://edcl9.sse.codesandbox.io/api/account/newtransaction', accountTrans)
+    this.client.post('https://edcl9.sse.codesandbox.io/api/account/newtransaction', accountTrans)
       .subscribe((response) => {
         console.log(response);
         callback(response);

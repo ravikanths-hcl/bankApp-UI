@@ -21,7 +21,7 @@ export class CustomerService {
 
 // api/user/:userId
 public getMiniStatement(callBackFunction){
-  this.client.get(`http://edcl9.sse.codesandbox.io/api/transaction/ministatement/${this.accountId}`)
+  this.client.get(`https://edcl9.sse.codesandbox.io/api/transaction/ministatement/${this.accountId}`)
   .subscribe((response) => {
     console.log(response);
     this.setMiniStatementData.next(response);
@@ -30,7 +30,7 @@ public getMiniStatement(callBackFunction){
 }
 
 public getDetailedStatement(searchQry, callBackFunction){
-  this.client.post(`http://edcl9.sse.codesandbox.io/api/transaction/detailedstatement`, searchQry)
+  this.client.post(`https://edcl9.sse.codesandbox.io/api/transaction/detailedstatement`, searchQry)
   .subscribe((response) => {
     console.log(response);
     callBackFunction(response);
@@ -41,7 +41,7 @@ public getDetailedStatement(searchQry, callBackFunction){
 
 // api/user/:name
 public getUserDetails(username, callBackFunction){
-  this.client.get(`http://edcl9.sse.codesandbox.io/api/users/${username}`)
+  this.client.get(`https://edcl9.sse.codesandbox.io/api/users/${username}`)
   .subscribe((response) => {
     const user = response[0];
     this.userid = user.userid;
@@ -52,7 +52,7 @@ public getUserDetails(username, callBackFunction){
 
 
   public getAccountDetails(userid, callBackFunction){
-    this.client.get(`http://edcl9.sse.codesandbox.io/api/account/${userid}`)
+    this.client.get(`https://edcl9.sse.codesandbox.io/api/account/${userid}`)
     .subscribe((response) => {
       const account = response;
       console.log(response);
@@ -63,7 +63,7 @@ public getUserDetails(username, callBackFunction){
   }
 
   public getAccounts(callback) {
-    this.client.get('http://edcl9.sse.codesandbox.io/api/accounts')
+    this.client.get('https://edcl9.sse.codesandbox.io/api/accounts')
       .subscribe((response) => {
         console.log(response);
         callback(response);
@@ -71,7 +71,7 @@ public getUserDetails(username, callBackFunction){
   }
 
   public fundTransfer(transfer, callback) {
-    this.client.post('http://edcl9.sse.codesandbox.io/api/account/fundtransfer', transfer)
+    this.client.post('https://edcl9.sse.codesandbox.io/api/account/fundtransfer', transfer)
       .subscribe((response) => {
         console.log(response);
         callback(response);
@@ -79,7 +79,7 @@ public getUserDetails(username, callBackFunction){
   }
 
   public updatePersonalDetails(userObj, userid, callBackFunction){
-    this.client.put( `http://edcl9.sse.codesandbox.io/api/user/${userid}`, userObj)
+    this.client.put( `https://edcl9.sse.codesandbox.io/api/user/${userid}`, userObj)
     .subscribe((response) => {
       console.log(response);
       callBackFunction(response);

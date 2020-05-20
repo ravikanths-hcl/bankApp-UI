@@ -11,7 +11,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string) {
-    return this.http.post<any>(`http://edcl9.sse.codesandbox.io/api/user/login`, { username: username, password: password })
+    return this.http.post<any>(`https://edcl9.sse.codesandbox.io/api/user/login`, { username: username, password: password })
     .pipe(map( res => {
                 // login successful if there's a jwt token in the response
                 if (res) {
