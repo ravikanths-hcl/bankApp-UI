@@ -1,0 +1,11 @@
+<p>admin-home works!</p>
+<div class="topnav">
+    <a class="active" href="#home">Home</a>
+    <a routerLink="/createUser" routerLinkActive="active">Create Account</a>
+    <div class="search-container">
+        <!-- <form [formGroup]="searchForm" (ngSubmit)="onSubmit()"> -->
+        <input type="text" placeholder="Search.." name="search" [(ngModel)]="searchId">
+        <button type="submit" (click)="onSubmit()"><i class="fa fa-search"></i></button>
+      <!-- </form> -->
+    </div>
+  </div>

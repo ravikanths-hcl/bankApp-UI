@@ -1,0 +1,48 @@
+<div role="main">
+  <div *ngIf="this.adminSvc.isUserCreated" class="jumbotron">
+    <h3>{{userCreated}}</h3>
+  </div>
+
+    <div *ngIf="!this.adminSvc.isUserCreated">
+
+      <div >
+        <div class="Hanu">
+          <form [formGroup]="createUserForm" (ngSubmit)="onSubmit(createUserForm)">
+            <div class="form-group d-md-table-row" >
+                <label for="name" class="d-md-table-cell md-col-6">Customer Name: </label>
+                <input type="text" formControlName="name" class="form-control d-md-table-cell" id="name" placeholder="Enter your name here">
+            </div>
+            <div class="form-group d-md-table-row" >
+              <label for="dob" class="d-md-table-cell md-col-6">Date of Birth</label>
+              <input type="date" formControlName="dob" class="form-control d-md-table-cell" id="dob" placeholder="dd/mm/yyyy">
+            </div>
+            <div class="form-group d-md-table-row" >
+              <label for="address" class="d-md-table-cell md-col-6">Address</label>
+              <textarea type="text" formControlName="address" class="form-control d-md-table-cell" id="address" placeholder=""></textarea>
+            </div>
+            <div class="form-group d-md-table-row" >
+              <label for="city" class="d-md-table-cell md-col-6">City</label>
+              <input type="text" formControlName="city" class="form-control d-md-table-cell" id="city" placeholder="">
+            </div>
+            <div class="form-group d-md-table-row" >
+              <label for="pin" class="d-md-table-cell md-col-6">Pin Code</label>
+              <input type="text" formControlName="pin" class="form-control d-md-table-cell" id="pin" placeholder="6 Digit">
+            </div>
+            <div class="form-group d-md-table-row" >
+              <label for="phone" class="d-md-table-cell md-col-6">Phone</label>
+              <input type="text" formControlName="phone" class="form-control d-md-table-cell" id="phone" placeholder="9999999999">
+            </div>
+            <div class="form-group d-md-table-row" >
+              <label for="username" class="d-md-table-cell md-col-6">Username</label>
+              <input type="text" formControlName="username" class="form-control d-md-table-cell" id="username" placeholder="username">
+            </div>
+            <div class="form-group d-md-table-row" >
+              <label for="password" class="d-md-table-cell md-col-6">Password</label>
+              <input type="password" formControlName="password" class="form-control d-md-table-cell" id="password" placeholder="Password">
+            </div>
+            <button type="submit" class="btn-sm btn-outline-success">Create Customer</button>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>

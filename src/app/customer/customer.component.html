@@ -1,0 +1,19 @@
+
+<!-- <router-outlet></router-outlet> -->
+
+<app-customer-header></app-customer-header>
+<div *ngIf='this.customerService.customerWhichClick==="home"'>
+<app-customer-home></app-customer-home>
+</div>
+<div *ngIf='this.customerService.customerWhichClick==="detailStatment"'>
+    <app-detail-statemnt></app-detail-statemnt>
+</div>
+<div  *ngIf='this.customerService.customerWhichClick==="fundTransfer"'>
+    <app-fund-transfer></app-fund-transfer>
+</div>
+<div *ngIf='this.customerService.customerWhichClick==="miniStatement"'>
+    <app-mini-statement></app-mini-statement>
+</div>
+<div *ngIf='this.customerService.customerWhichClick==="UpdateDetail"'>
+    <app-update-details></app-update-details>
+</div>

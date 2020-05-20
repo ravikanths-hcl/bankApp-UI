@@ -1,0 +1,32 @@
+<div role="main">
+  <div *ngIf="this.customerService.isTransferred" class="jumbotron">
+    <h3>{{this.transferMsg}}</h3>
+  </div>
+
+    <div>
+        <div *ngIf="!this.customerService.isTransferred" class="m-table">
+                <form [formGroup]="fundTransferForm" (ngSubmit)="onSubmit(fundTransferForm)">
+
+                    <div class="form-group  d-md-table-row">
+                        <label for="fromAccount" class="d-md-table-cell md-col-3">From Account</label>
+                        <input type="text" class="form-control" id="fromAccount" formControlName="fromAccount" disabled>
+                    </div>
+
+                    <div class="form-group d-md-table-row">
+                      <label for="toAccount" class="d-md-table-cell md-col-3">To Account</label>
+                      <select class="form-control" formControlName="toAccount" id="toAccount">
+                        <option *ngFor="let account of accounts" [value]="account.accountid">{{account.accountid}}</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group d-md-table-row">
+                        <label for="amount" class="d-md-table-cell md-col-3">Amount</label>
+                        <input type="number" class="form-control" id="amount" formControlName="amount"  placeholder="">
+                    </div>
+
+                    <button type="submit" class="btn-sm btn-outline-success center">Transfer</button>
+
+                </form>
+          </div>
+    </div>
+</div>

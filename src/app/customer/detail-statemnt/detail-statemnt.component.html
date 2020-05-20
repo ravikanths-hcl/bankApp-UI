@@ -1,0 +1,85 @@
+<div class="text-center">
+    <h6>Get Details Statement</h6>
+</div>
+        <div>
+                <form [formGroup]="detailSatementForm" (ngSubmit)="onSubmit(detailSatementForm)">
+                    <div class="d-table input-sm">
+
+                        <div class="d-table-row m-5">
+                          <label for="criteria">Criteria</label>
+                          <select class="form-control col-md-4 " formControlName="criteria" id="criteria">
+                            <option value="DATE-RANGE">DateRange</option>
+                            <option value="MONTHLY">Monthly</option>
+                            <option value="ANNUALLY">Annually</option>
+                            <option value="AMOUNT">Transaction Amount</option>
+                            <option value="CHEQUE">Cheque Number</option>
+                          </select>
+                        </div>
+
+                        <div class="d-table-row m-5">
+                          <div class="d-table-cell float-left bg-light p-md-2">
+                            <label for="startDate">Start Date</label>
+                            <input id="startDate" name="dob" placeholder='YYYY-MM-DD'
+                              pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"
+                              formControlName="startDate" type="date" class="form-control">
+
+                            <label for="endDate">End Date</label>
+                            <input id="endDate" name="endDate" placeholder='YYYY-MM-DD'
+                              pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"
+                              formControlName="endDate" endDate= '+d'
+                              autoclose= "true" todayBtn="true" type="date" class="form-control">
+                          </div>
+
+                          <div class="d-table-cell float-left m-auto  bg-light p-md-2">
+                            <label for="amount">Amount</label>
+                            <input id="amount" name="amount" formControlName="amount" type="number" class="form-control">
+
+                            <input type="radio" id="lte" name="lessthan" value="LESSTHAN" formControlName="lessthan">
+                              <label for="lte">Less Than Equal</label><br>
+                            <input type="radio" id="gte" name="lessthan" value="MORETHAN" formControlName="lessthan">
+                              <label for="gte">Greater Than Equal</label><br>
+                          </div>
+
+                          <div class="d-table-cell float-left m-auto  bg-light p-md-2">
+                            <label for="cheque">Cheque Number</label>
+                            <input id=cheque name="cheque" formControlName="cheque" type="number" class="form-control">
+                          </div>
+                        </div>
+
+                        <div class="d-table-row">
+                          <button type="submit" class="btn-sm btn-outline-primary">Get Statement</button>
+                        </div>
+                    </div>
+
+                </form>
+    </div>
+
+<div *ngIf="showTable">
+    <table class="table table-striped col-lg-2" id="detail-table">
+      <thead>
+          <tr>
+              <th scope="col">#</th>
+              <th scope="col">Transaction No</th>
+              <th scope="col">Transaction Date</th>
+              <th scope="col">Transaction Type </th>
+              <th scope="col">Remarks </th>
+              <th scope="col">Amount</th>
+              <th scope="col">Balance</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let transaction of userTransaction; let i = index">
+              <th scope="row">{{ i+1 }}</th>
+              <td>{{ transaction.transactionId }}</td>
+              <td>{{ transaction.createdAt | date }}</td>
+              <td>{{ transaction.transtype }}</td>
+              <td>{{ transaction.remarks  }}</td>
+              <td>{{ transaction.transAmount | number }}</td>
+              <td>{{ transaction.balance | number }}</td>
+          </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary" (click)="exportStatemntToexcel()">
+      Download
+    </button>
+</div>

@@ -1,0 +1,24 @@
+<table class="table table-striped col-lg-2">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Transaction No</th>
+            <th scope="col">Transaction Date</th>
+            <th scope="col">Transaction Type </th>
+            <th scope="col">Remarks </th>
+            <th scope="col">Amount</th>
+            <th scope="col">Balance</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let transaction of userTransaction; let i = index">
+            <th scope="row">{{ i+1 }}</th>
+            <td>{{ transaction.transactionId }}</td>
+            <td>{{ transaction.createdAt | date }}</td>
+            <td>{{ transaction.transtype }}</td>
+            <td>{{ transaction.remarks  }}</td>
+            <td>{{ transaction.transAmount | number }}</td>
+            <td>{{ transaction.balance | number }}</td>
+        </tr>
+    </tbody>
+</table>
