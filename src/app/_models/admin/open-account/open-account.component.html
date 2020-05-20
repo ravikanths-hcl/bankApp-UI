@@ -1,0 +1,68 @@
+<div role="main">
+  <div *ngIf="this.adminSvc.isAccountCreated" class="jumbotron">
+    <h3>{{accountCreated}}</h3>
+  </div>
+
+  <div *ngIf="!this.adminSvc.isAccountCreated">
+    <div style="display: flex;">
+            <div class="Hanu">
+                <form  [formGroup]="createAccountForm" (ngSubmit)="onSubmit(createAccountForm)">
+
+                  <div class="form-group d-md-table-row">
+                        <label for="acctType" class="d-md-table-cell md-col-6">Account Type</label>
+                        <select class="form-control" formControlName="type" id="acctType">
+                            <option>Savings</option>
+                            <option>Current</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group d-md-table-row">
+                        <label for="jointAcct" class="d-md-table-cell md-col-6">Joint Account</label>
+                        <input type="checkbox" class="sm-col-3" formControlName="joint" id="jointAcct">
+                    </div>
+
+                    <div class="form-group d-md-table-row">
+                        <label for="primaryOwner" class="d-md-table-cell md-col-6">Primary Owner</label>
+                        <select class="form-control" formControlName="primaryOwner" id="primaryOwner">
+                          <option *ngFor="let user of users" [value]="user.userid">{{user.userDetails.name}}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group d-md-table-row">
+                      <label for="secondowner" class="d-md-table-cell md-col-6">Secondary Owner</label>
+                      <select class="form-control" formControlName="secondaryOwner" id="secondowner">
+                        <option *ngFor="let user of users" [value]="user.userid">{{user.userDetails.name}}</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group d-md-table-row">
+                        <label for="branch" class="d-md-table-cell md-col-6">Branch</label>
+                        <select class="form-control" formControlName="branch">
+                          <option *ngFor="let branch of branches" [value]="branch.branchname">{{branch.branchname}}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group d-md-table-row">
+                      <label for="initBalance" class="d-md-table-cell md-col-6">Initial Balance</label>
+                      <input type="text" class="form-control" formControlName="initBalance" id="initBalance">
+                    </div>
+
+                    <div class="form-group d-md-table-row">
+                        <label for="currecy" class="d-md-table-cell md-col-6">Currency</label>
+                        <select class="form-control" formControlName="currency">
+                            <option>RUPEES</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group d-md-table-row">
+                        <label for="cheques" class="d-md-table-cell md-col-6">Cheques</label>
+                        <textarea formControlName="cheques" class="form-control" id="cheques" placeholder=""></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-sm btn-outline-success">Create Account</button>
+                </form>
+            </div>
+          </div>
+        </div>
+
+</div>
